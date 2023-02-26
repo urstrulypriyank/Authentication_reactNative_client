@@ -1,9 +1,19 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import background from '../../assets/background.jpg';
 import {bgImg} from '../common/background';
 import logo from '../../assets/logo.png';
 import {logocss} from '../common/logo.js';
+import {btn} from '../common/button';
+
 const Login = () => {
   return (
     <View style={styles.wrapper}>
@@ -20,6 +30,24 @@ const Login = () => {
         <View style={styles.s1}>
           <Text style={[styles.text, styles.loginText]}>Login</Text>
           <Text style={[styles.text]}>Sign in to continue</Text>
+        </View>
+        <View style={styles.formContainer}>
+          <Text style={styles.black}>Email</Text>
+          <TextInput style={styles.textInput}></TextInput>
+          <Text style={styles.black}>Password</Text>
+          <TextInput
+            style={styles.textInput}
+            secureTextEntry={true}></TextInput>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity>
+            <Text style={{color: 'red'}}>Forgot Password</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={[btn]}>
+              <Text>Submit</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -44,7 +72,7 @@ const styles = StyleSheet.create({
   container2: {
     flex: 1,
     borderWidth: 1,
-        
+
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     backgroundColor: 'white',
@@ -54,9 +82,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     opacity: 0.7,
-},
-loginText: {
+  },
+  loginText: {
     fontSize: 30,
     marginTop: 20,
+  },
+  black: {
+    color: 'black',
+    fontSize: 18,
+    margin: 10,
+  },
+  formContainer: {
+    marginVertical: 10,
+    marginHorizontal: 20,
+  },
+  textInput: {
+    borderColor: 'black',
+    borderWidth: 1,
+    backgroundColor: 'pink',
+    borderRadius: 20,
+
+    margin: 5,
   },
 });

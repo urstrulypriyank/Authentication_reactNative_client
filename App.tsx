@@ -2,12 +2,14 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import React from 'react';
 import Welcome from './src/Screens/Welcome';
 import Login from './src/Screens/Login';
+import SignUp from './src/Screens/SignUp';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       {/* <Welcome /> */}
-      <Login />
+      {/* <Login /> */}
+      <SignUp />
     </SafeAreaView>
   );
 };
