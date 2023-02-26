@@ -3,14 +3,24 @@ import React from 'react';
 import Welcome from './src/Screens/Welcome';
 import Login from './src/Screens/Login';
 import SignUp from './src/Screens/SignUp';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      {/* <Welcome /> */}
-      {/* <Login /> */}
-      <SignUp />
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.safeAreaView}>
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 

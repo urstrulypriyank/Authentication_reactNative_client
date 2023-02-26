@@ -11,20 +11,20 @@ import logo from '../../assets/logo.png';
 import {btnContainer, btn, btnText} from '../common/button';
 import {bgImg} from '../common/background';
 import background from '../../assets/background.jpg';
-const Welcome = () => {
+const Welcome = ({navigation}) => {
   return (
     <View style={styles.wrapper}>
       <Image source={background} style={bgImg} />
       <Image source={logo} style={styles.logo} />
 
       <View style={btnContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <View style={btn}>
             <Text style={btnText}>Login</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <View style={btn}>
             <Text style={btnText}>SignUp</Text>
           </View>

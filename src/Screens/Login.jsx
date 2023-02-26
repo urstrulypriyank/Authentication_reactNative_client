@@ -13,8 +13,9 @@ import {bgImg} from '../common/background';
 import logo from '../../assets/logo.png';
 import {logocss} from '../common/logo.js';
 import {btn} from '../common/button';
+import {flexRow} from '../common/FlexRow';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <View style={styles.wrapper}>
       <Image source={logo} style={logocss} />
@@ -48,6 +49,12 @@ const Login = () => {
               <Text>Submit</Text>
             </View>
           </TouchableOpacity>
+          <View style={flexRow}>
+            <Text style={{color: 'black'}}>Don't have an account </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <Text style={{color: 'red'}}>Create a new account</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -61,6 +68,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     display: 'flex',
+    backgroundColor: 'black',
   },
   container1: {
     height: '40%',
