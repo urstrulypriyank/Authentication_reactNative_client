@@ -6,21 +6,39 @@ It is small component of react native which you can include and use in other rea
 It uses jwt and localStorage to help in authentication.
 
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/urstrulypriyank/Authentication_reactNative_client
+```
+
+Go to the project directory
+
+```bash
+  cd Authentication_reactNative_client
+```
+
+Install dependencies
+
+```bash
+  yarn install 
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
 ## Demo
 
-ScreenShot of react native client:
+Insert gif or link to demo
 
 ![WelcomeScreen](https://raw.githubusercontent.com/urstrulypriyank/Authentication_reactNative_client/main/demo-images/WelcomeScreen.jpeg)
 
 ![Login](https://raw.githubusercontent.com/urstrulypriyank/Authentication_reactNative_client/main/demo-images/Login.jpeg)
 
 ![SignUp](https://raw.githubusercontent.com/urstrulypriyank/Authentication_reactNative_client/main/demo-images/SignUp.jpeg)
-## Installation
-
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
-    
