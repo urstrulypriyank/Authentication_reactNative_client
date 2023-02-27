@@ -8,7 +8,7 @@ It uses jwt and localStorage to help in authentication.
 
 ## Demo
 
-Insert gif or link to demo
+ScreenShot of react native client:
 
 ![WelcomeScreen](https://raw.githubusercontent.com/urstrulypriyank/Authentication_reactNative_client/main/demo-images/WelcomeScreen.jpeg)
 
