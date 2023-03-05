@@ -6,8 +6,12 @@ const FormFragment = props => {
     <View style={styles.formContainer}>
       <Text style={styles.black}>{props.title}</Text>
       <TextInput
-        style={styles.textInput} secureTextEntry={props.secureTextEntry}
-        ></TextInput>
+        style={styles.textInput}
+        secureTextEntry={props.secureTextEntry}
+        onChangeText={props.onChangeText}
+        onPressIn={() => {
+          props.setErrorMsg(null);
+        }}></TextInput>
     </View>
   );
 };
@@ -23,7 +27,8 @@ const styles = StyleSheet.create({
   formContainer: {
     marginVertical: 5,
     marginHorizontal: 20,
-  }, textInput: {
+  },
+  textInput: {
     borderColor: 'black',
     borderWidth: 1,
     backgroundColor: 'pink',

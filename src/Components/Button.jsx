@@ -1,12 +1,12 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import { btnContainer } from '../common/button';
+import {btnContainer} from '../common/button';
 
-const Button = ({text, ViewStyle = {}, TextStyle, btnContainer}) => {
+const Button = ({text, ViewStyle = {}, TextStyle, btnContainer, onPress}) => {
   return (
-    <TouchableOpacity style={btnContainer}>
+    <TouchableOpacity style={btnContainer} onPress={onPress}>
       <View style={[styles.btn, ViewStyle]}>
-        <Text style={[TextStyle,styles.btnText]}>{text}</Text>
+        <Text style={[TextStyle, styles.btnText]}>{text}</Text>
       </View>
     </TouchableOpacity>
   );

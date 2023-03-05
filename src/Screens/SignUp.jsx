@@ -1,10 +1,65 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View, ScrollView} from 'react-native';
-import React from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  Alert,
+} from 'react-native';
+import React, {useState} from 'react';
 import {wrapper} from '../common/wrapper';
 import FormFragment from '../Components/FormFragment';
 import Button from '../Components/Button';
 
 const SignUp = ({navigation}) => {
+  const [fdata, setFdata] = useState({
+    name: '',
+    email: '',
+    password: '',
+    dob: '',
+    cpassword: '',
+  });
+  const [errormsg, setErrorMsg] = useState(null);
+  const sendToBackend = () => {
+    // checking data received
+    console.log(fdata);
+    // if any fields have empty value
+
+    if (
+      fdata.name === '' ||
+      fdata.email === '' ||
+      fdata.dob === '' ||
+      fdata.password === '' ||
+      fdata.cpassword === ''
+    ) {
+      setErrorMsg('All the fields are required');
+      return;
+    } else {
+      if (fdata.password !== fdata.cpassword) {
+        setErrorMsg('Password and confirm password must be same');
+        return;
+      } else {
+        fetch('http://10.0.2.2:3000/signUp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(fdata),
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.error) {
+              setErrorMsg(data.error);
+            } else {
+              Alert.alert('account created sucessfully');
+              navigation.navigate('Login');
+            }
+          });
+      }
+    }
+  };
+
   return (
     <View style={wrapper}>
       <View style={styles.container1}></View>
@@ -26,13 +81,40 @@ const SignUp = ({navigation}) => {
               </Text>
             </TouchableOpacity>
           </View>
+          {errormsg ? <Text style={{color: 'red'}}>{errormsg}</Text> : null}
         </View>
-        <FormFragment title="Name" />
-        <FormFragment title="Email" />
-        <FormFragment title="DOB" />
-        <FormFragment title="Password" secureTextEntry={true} />
-        <FormFragment title="Confirm Password" secureTextEntry={true} />
-        <Button text="SignUp" btnContainer={{alignItems: 'center'}} />
+        <FormFragment
+          title="Name"
+          onChangeText={text => setFdata({...fdata, name: text})}
+          setErrorMsg={setErrorMsg}
+        />
+        <FormFragment
+          title="Email"
+          onChangeText={text => setFdata({...fdata, email: text})}
+          setErrorMsg={setErrorMsg}
+        />
+        <FormFragment
+          title="DOB"
+          onChangeText={text => setFdata({...fdata, dob: text})}
+          setErrorMsg={setErrorMsg}
+        />
+        <FormFragment
+          title="Password"
+          secureTextEntry={true}
+          onChangeText={text => setFdata({...fdata, password: text})}
+          setErrorMsg={setErrorMsg}
+        />
+        <FormFragment
+          title="Confirm Password"
+          secureTextEntry={true}
+          onChangeText={text => setFdata({...fdata, cpassword: text})}
+          setErrorMsg={setErrorMsg}
+        />
+        <Button
+          text="SignUp"
+          btnContainer={{alignItems: 'center'}}
+          onPress={sendToBackend}
+        />
       </ScrollView>
     </View>
   );
